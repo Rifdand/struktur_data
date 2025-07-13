@@ -1,8 +1,7 @@
-# TUGAS PROJECT UAS DENGAN LOOP MENU
-
 print("##### Kelompok 1 #####")
 print("Rifdan (24241107)")
 print("Muammar hirsan (24241151)")
+print("Jelyan Ananda Herdiyatma (24241175)")
 
 while True:
     print("\nDaftar Program")
@@ -23,76 +22,69 @@ while True:
         a = 24
         b = 53
 
-        hasil = a < b
-        print(f"{a} < {b} = {hasil}")
-
-        hasil = a > b
-        print(f"{a} > {b} = {hasil}")
-
-        hasil = a <= b
-        print(f"{a} <= {b} = {hasil}")
-
-        hasil = a != b
-        print(f"{a} != {b} = {hasil}")
-
-        hasil = not (a == b)
-        print(f"not ({a} == {b}) = {hasil}")
+        # Menampilkan hasil perbandingan dengan format string yang lebih rapi
+        print(f"{a} < {b} = {a < b}")
+        print(f"{a} > {b} = {a > b}")
+        print(f"{a} <= {b} = {a <= b}")
+        print(f"{a} != {b} = {a != b}")
+        print(f"not ({a} == {b}) = {not (a == b)}")
 
     elif pilihan == "2":
         print("\n=== Meet2: Operasi Logika ===")
         x = True
         z = not x
-        print("Nilai dari z =", z)
+        print(f"Nilai dari z = {z}")
 
         print("\n********** AND ***********")
-        x = True; y = True
-        print(x, "and", y, "=", x and y)
-
-        x = True; y = False
-        print(x, "and", y, "=", x and y)
-
-        x = False; y = True
-        print(x, "and", y, "=", x and y)
-
-        x = False; y = False
-        print(x, "and", y, "=", x and y)
+        combinations = [(True, True), (True, False), (False, True), (False, False)]
+        for x, y in combinations:
+            print(f"{x} and {y} = {x and y}")
 
     elif pilihan == "3":
         print("\n=== Meet3-4: Luas Segitiga & Gambar ===")
-        alas = int(input("Masukkan alas segitiga: "))
-        tinggi = int(input("Masukkan tinggi segitiga: "))
-
-        if alas > 0 and tinggi > 0:
-            luas = 0.5 * alas * tinggi
-            print(f"\nLuas segitiga adalah: {luas:.2f}\n")
-            print("Gambar segitiga:")
-            for i in range(1, tinggi + 1):
-                print(' ' * (tinggi - i) + '*' * (2 * i - 1))
-        else:
-            print("Alas dan tinggi harus lebih dari 0!")
+        try:
+            alas = int(input("Masukkan alas segitiga: "))
+            tinggi = int(input("Masukkan tinggi segitiga: "))
+            if alas > 0 and tinggi > 0:
+                luas = 0.5 * alas * tinggi
+                print(f"\nLuas segitiga adalah: {luas:.2f}\n")
+                print("Gambar segitiga:")
+                for i in range(1, tinggi + 1):
+                    print(' ' * (tinggi - i) + '*' * (2 * i - 1))
+            else:
+                print("Alas dan tinggi harus lebih dari 0!")
+        except ValueError:
+            print("Input tidak valid, masukkan angka yang benar!")
 
     elif pilihan == "4":
         print("\n=== Meet5: Kalkulator Sederhana ===")
         print("Masukkan dua angka dan pilih operasi (+, -, *)")
         operasi = input("Operasi (+, -, *): ")
-        angka1 = float(input("Masukkan angka pertama: "))
-        angka2 = float(input("Masukkan angka kedua: "))
-
-        if operasi == "+":
-            hasil = angka1 + angka2
-        elif operasi == "-":
-            hasil = angka1 - angka2
-        elif operasi == "*":
-            hasil = angka1 * angka2
-        else:
-            hasil = "Operasi tidak valid"
-
-        print("Hasil:", hasil)
+        
+        try:
+            angka1 = float(input("Masukkan angka pertama: "))
+            angka2 = float(input("Masukkan angka kedua: "))
+            
+            if operasi == "+":
+                hasil = angka1 + angka2
+            elif operasi == "-":
+                hasil = angka1 - angka2
+            elif operasi == "*":
+                hasil = angka1 * angka2
+            else:
+                hasil = "Operasi tidak valid"
+            
+            print(f"Hasil: {hasil}")
+        except ValueError:
+            print("Input angka tidak valid!")
 
     elif pilihan == "5":
         print("\n=== Meet6: Hak Akses ===")
         hak_akses = input("Masukkan hak akses Anda: ").lower()
-        print("Full akses" if hak_akses == "admin" else "Akses denied")
+        if hak_akses == "admin":
+            print("Full akses")
+        else:
+            print("Akses denied")
 
     elif pilihan == "6":
         print("\n=== Meet7: Pengecekan Password ===")
@@ -106,17 +98,17 @@ while True:
     elif pilihan == "7":
         print("\n=== Meet8: Manipulasi String ===")
         number = "1234567890"
-        print("a. Data terakhir:", number[-1])
-        print("b. Data pertama:", number[0])
-        print("c. Data ke-3 sampai ke-6:", number[2:6])
+        print(f"a. Data terakhir: {number[-1]}")
+        print(f"b. Data pertama: {number[0]}")
+        print(f"c. Data ke-3 sampai ke-6: {number[2:6]}")
 
     elif pilihan == "8":
         print("\n=== Meet9-10: Pemisah Domain ===")
         domain = input("Masukkan nama domain anda (contoh: google.com): ")
         if "." in domain:
-            nama, ekstensi = domain.split(".")
-            print("Nama domain anda adalah =", nama)
-            print("Nama yang anda gunakan adalah =", ekstensi)
+            nama, ekstensi = domain.rsplit(".", 1)
+            print(f"Nama domain anda adalah = {nama}")
+            print(f"Nama yang anda gunakan adalah = {ekstensi}")
         else:
             print("Domain tidak valid!")
 
